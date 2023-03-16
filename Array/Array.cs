@@ -162,4 +162,160 @@ namespace Array
             return InnerList.GetEnumerator();
         }
     }
+
+
+    public class Array<T> : IEnumerable<T> , ICloneable
+    {
+
+
+        private T[] InnerList;
+
+        private int position=0;
+        public int Length => InnerList.Length;
+
+        public Array(int defaultSize = 2)
+        {
+            InnerList = new T[defaultSize];
+        }
+
+        public Array(params T[] array) : this(array.Length)
+        {
+            System.Array.Copy(array, InnerList, array.Length);
+        }
+
+
+        public T GetValue(int index)
+        {
+            if (index >= 0 && index < InnerList.Length)
+            {
+                return InnerList[index];
+            }
+            throw new ArgumentOutOfRangeException("Index");
+        }
+
+        public void SetValue(T value, int index)
+        {
+            if(index>=0 && index < InnerList.Length)
+            {
+                InnerList[index] = value;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
+        public void Add(T value)
+        {
+            if (ArrayIsNull(position))
+            {
+                InnerList[position] = value;
+            }
+            else
+            {
+                position = InnerList.Length;
+                ExtendArray(position);
+                InnerList[position] = value;
+            }
+
+            position++;
+            if(position == InnerList.Length)    
+                DoubleArray();
+            
+        }
+
+        private void ExtendArray(int _position)
+        {
+            var _array = new T[_position+1];
+            System.Array.Copy(InnerList, _array, _position);
+            InnerList = _array;
+        }
+
+        private void DoubleArray()
+        {
+            var _array = new T[InnerList.Length*2];
+            System.Array.Copy(InnerList, _array, InnerList.Length);
+            InnerList = _array;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach(var item in InnerList)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+
+        private bool ArrayIsNull(int _position)
+        {
+
+
+            if (InnerList[0].GetType() == typeof(int))
+            {
+                for(int x=_position; x<InnerList.Length; x++)
+                {
+                    if (InnerList[x] is 0)
+                    {
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            else { 
+                for(int i = _position; i<InnerList.Length; i++)
+                {
+                    if (InnerList[i] !=null)
+                        return false;
+                }
+                return true;
+            }
+            
+        }
+
+
+        public static void Copy(IEnumerable source_array, IEnumerable destination_array, int length)
+        {
+            int _length = 0;
+            foreach (var item in source_array)
+            {
+                _length++;
+            }
+
+            var _array = new Object[length];
+
+            int i = 0;
+            foreach(var value in source_array)
+            {
+                if (i != length)
+                {
+                    _array[i] = value;
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
+            destination_array = _array;
+        }
+    }
+
 }

@@ -1,7 +1,21 @@
 ﻿
 
-var array = new Array.Array();
+var array = new Array.Array<int>(1,2,4,53,3);
 
-array.SetValue(10, 0);
-array.SetValue(20, 1);
-array.Add(4);
+array.Add(1);
+
+
+
+foreach(var item in array)
+{
+    Console.WriteLine(item);
+}
+
+Object a = 3;
+Object b = 3;
+
+
+Console.WriteLine(a.ToString()==b.ToString());
+
+Console.WriteLine(array.Length);
+Console.ReadKey();

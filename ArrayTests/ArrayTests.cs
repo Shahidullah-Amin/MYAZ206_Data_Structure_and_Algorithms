@@ -148,6 +148,7 @@ namespace ArrayTests
             array.Remove(12);
             array.Remove(3);
             array.Remove(4);
+            array.Add(16);
 
             string numbers = "";
 
@@ -155,8 +156,10 @@ namespace ArrayTests
             {
                 numbers += item;
             }
-            Assert.Equal(array.Length, 4);
-            Assert.Equal(numbers, "9545");
+            Assert.Equal(array.GetValue(0), 9);
+            Assert.Equal(array.GetValue(4), 16);
+            Assert.Equal(array.Length, 5);
+            Assert.Equal(numbers, "954516");
 
         }
 

@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Array.Array">
-    <Position X="5.5" Y="0.75" Width="2" />
+    <Position X="4.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAYAAAAAICAAAhAAAAAAJABgAAAIAAAAAEAACBAAABA=</HashCode>
+      <FileName>Array.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Array.Array&lt;T&gt;">
+    <Position X="7.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAhAAAAAAAAAAAAAAAAAEAEAAAAAAABA=</HashCode>
       <FileName>Array.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
