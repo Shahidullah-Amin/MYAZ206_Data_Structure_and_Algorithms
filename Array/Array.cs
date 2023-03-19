@@ -8,7 +8,6 @@ namespace Array
         private Object[] InnerList;
 
         private int position = 0;
-
         private bool isNull = true;
         public int Length => InnerList.Length;
 
@@ -16,12 +15,17 @@ namespace Array
         {
             InnerList = new Object[defaultSize];
         }
-
         public Array(params Object[] array) : this(array.Length)
         {
             System.Array.Copy(array , InnerList , array.Length);
         }
-
+        public Array(IEnumerable _array) : this()
+        {
+            foreach(var value in _array)
+            {
+                this.Add(value);
+            }
+        }
         public Object GetValue(int index)
         {
             if(index >=0  && index < InnerList.Length)
@@ -31,7 +35,6 @@ namespace Array
             }
             throw new ArgumentOutOfRangeException("Index");
         }
-
         public void SetValue(Object value, int index)
         {
             if(index >=0 && index< InnerList.Length)
@@ -43,7 +46,6 @@ namespace Array
                 throw new ArgumentOutOfRangeException("Index");
             }
         }
-
         public void Add(Object obj)
         {
             if (arrayIsNull(position) && isNull)
@@ -106,6 +108,7 @@ namespace Array
                 {
                     HalfArray(count);
                 }
+                position--;
 
                 return temp;
             }
@@ -115,7 +118,7 @@ namespace Array
         {
             foreach (var item in InnerList)
             {
-                if (item.ToString() == obj.ToString())
+                if (item.Equals(obj))
                 {
                     return true;
                 }
@@ -159,7 +162,18 @@ namespace Array
 
         public IEnumerator GetEnumerator()
         {
-            return InnerList.GetEnumerator();
+            return InnerList.Take(position).GetEnumerator();
+        }
+        public int IndexOf(Object obj)
+        {
+            for (int x = 0; x < InnerList.Length; x++)
+            {
+                if (InnerList[x].Equals(obj))
+                {
+                    return x;
+                }
+            }
+            return -1;
         }
     }
 

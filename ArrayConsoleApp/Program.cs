@@ -4,7 +4,7 @@ var array = new Array.Array<int>(1,2,4,53,3);
 
 array.Add(1);
 
-
+int[] int_array = new int[] { 343, 43, 3, };
 
 foreach(var item in array)
 {

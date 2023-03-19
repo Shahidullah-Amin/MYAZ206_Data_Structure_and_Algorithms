@@ -3,15 +3,15 @@
   <Class Name="Array.Array">
     <Position X="4.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAYAAAAAICAAAhAAAAAAJABgAAAIAAAAAEAACBAAABA=</HashCode>
+      <HashCode>AEYAAAAAICAAAhAAAAAAJABgAAAIAAAAAEAACBAAABA=</HashCode>
       <FileName>Array.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Array.Array&lt;T&gt;">
-    <Position X="7.5" Y="0.5" Width="1.75" />
+    <Position X="7.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAhAAAAAAAAAAAAAAAAAEAEAAAAAAABA=</HashCode>
+      <HashCode>AAIAAAAEICAAAhAAAAAAIABAAgAAAAAEAEAAABAAABA=</HashCode>
       <FileName>Array.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

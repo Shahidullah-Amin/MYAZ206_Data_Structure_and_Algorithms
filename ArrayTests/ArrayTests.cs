@@ -92,7 +92,7 @@ namespace ArrayTests
             Assert.Equal("{1, 2, 3, 4}", stringArray);
         }
 
-        
+
 
         [Theory]
         [InlineData(1)]
@@ -174,6 +174,65 @@ namespace ArrayTests
             Assert.Equal(a1, a2);
         }
 
+        [Fact]
+        public void Array_Take_function_Test_with_Remove()
+        {
+            var array = new Array.Array();
+
+            array.Add("Mohammad");
+            array.Add("Ahmad");
+            array.Add("Mustafa");
+            array.Add("Omar");
+            array.Add("Emran");
+
+            array.Remove("Emran");
+            array.Remove("Mohammad");
+            array.Add("Ibrahim");
+
+            string array_string = "";
+
+            foreach (var name in array)
+            {
+                array_string += name + "_";
+            }
+
+
+            Assert.Equal("Ahmad_Mustafa_Omar_Ibrahim_", array_string);
+            Assert.Equal(array.GetValue(0), "Ahmad");
+            Assert.Equal(array.GetValue(3), "Ibrahim");
+            Assert.Equal(array.Length, 8);
+        }
+
+
+        [Fact]
+        public void IEnumerable_Constructor_Test()
+        {
+            List<string> names = new List<string>(){ "Mohammad", "Ahmad", "Ali", "Mustafa", "Emran" };
+
+
+
+            var array = new Array.Array(names);
+
+            var string_names = "";
+
+            foreach(var name in array)
+            {
+                string_names += name+"_";
+            }
+
+            Assert.Equal("Mohammad_Ahmad_Ali_Mustafa_Emran_", string_names);
+            Assert.Equal(array.GetValue(4), "Emran");
+            Assert.Equal(array.Length, 8);
+        }
+
+        [Fact]
+        public void Test_IndexOf_function()
+        {
+            var array = new Array.Array("Emran", "Mustafa","Kamran");
+
+
+            Assert.Equal(array.IndexOf("Mustafa") , 1);
+        }
 
     }
 }
