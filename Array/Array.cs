@@ -103,13 +103,13 @@ namespace Array
                 }
 
                 InnerList = newArray;
+                position = count;
 
                 if (count == InnerList.Length / 2)
                 {
                     HalfArray(count);
                 }
-                position--;
-
+        
                 return temp;
             }
             return null;
@@ -133,15 +133,20 @@ namespace Array
         }
         private bool arrayIsNull(int pos)
         {
-
-            for (int i = pos; i < InnerList.Length; i++)
+            if (pos != InnerList.Length)
             {
-                if (InnerList[i] != null)
+                for (int i = pos; i < InnerList.Length; i++)
                 {
-                    return false;
+                    if (InnerList[i] != null)
+                    {
+                        return false;
+                    }
                 }
+                return true;
+
             }
-            return true;
+            return false;
+
         }
         private void DoubleArray()
         {
@@ -159,10 +164,9 @@ namespace Array
         {
             return this.MemberwiseClone();
         }
-
         public IEnumerator GetEnumerator()
         {
-            return InnerList.Take(position).GetEnumerator();
+            return InnerList.Take(this.TakeSize(InnerList)).GetEnumerator();
         }
         public int IndexOf(Object obj)
         {
@@ -175,6 +179,33 @@ namespace Array
             }
             return -1;
         }
+        
+        public void AddFirst(Object obj)
+        {
+            var array_ = new Object[InnerList.Length + 1];
+            array_[0] = obj;
+
+            for(int i =1;  i < array_.Length; i++)
+            {
+                array_[i] = InnerList[i-1];
+            }
+
+            InnerList = array_;
+        }
+
+
+        private int TakeSize(Object[] arr)
+        {
+            for(int i =arr.Length-1; i >= 0; i--)
+            {
+                if (arr[i] != null)
+                {
+                    return i + 1;
+                }
+            }
+            return 1;
+        }
+
     }
 
 

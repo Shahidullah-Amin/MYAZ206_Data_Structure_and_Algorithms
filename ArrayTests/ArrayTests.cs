@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace ArrayTests
+namespace Tests
 {
     public class ArrayTests
     {
@@ -232,6 +232,26 @@ namespace ArrayTests
 
 
             Assert.Equal(array.IndexOf("Mustafa") , 1);
+        }
+
+
+        [Fact]
+        public void AddFirst_Function_Test()
+        {
+            var array = new Array.Array( "c", "d","e");
+
+
+            array.AddFirst("b");
+            array.AddFirst("a");
+
+            string letters = "";
+
+            foreach(var item in array)
+            {
+                letters += item;
+            }
+
+            Assert.Equal("abcde", letters);
         }
 
     }
